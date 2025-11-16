@@ -68,7 +68,7 @@
               <span class="tema-categoria">{{ tema.categoria }}</span>
             </div>
             
-            <div class="tema-estado">
+            <!--<div class="tema-estado">
               <span 
                 *ngIf="tema.aprendido" 
                 class="badge badge-success">
@@ -79,8 +79,17 @@
                 class="badge badge-secondary">
                 En progreso
               </span>
-            </div>
-
+            </div>-->
+            <select [(ngModel)]="tema.aprendido" class="form-control">
+              <option [ngValue]="false">En proceso</option>
+              <option [ngValue]="true">Completado</option>
+            </select>
+            <span *ngIf="tema.aprendido" class="badge badge-success mt-2">
+              ✓ Completado
+            </span>
+            <span *ngIf="!tema.aprendido" class="badge badge-secondary mt-2">
+              En proceso
+            </span>
             <!-- Mentorías -->
             <div *ngIf="tema.requiereMentoria && tema.aprendido" class="mentorias-info">
               <small>
@@ -98,13 +107,13 @@
                 Iniciar Mentoría
               </button>
               
-              <button 
+              <!--<button 
                 *ngIf="puedeCertificar(tema)"
                 class="btn btn-success btn-sm"
                 (click)="abrirModalConfirmacion(usuario, tema); $event.stopPropagation()"
                 [disabled]="procesando">
                 Confirmar y Certificar
-              </button>
+              </button>-->
             </div>
           </div>
         </div>
